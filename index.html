@@ -2,12 +2,63 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
-		Index | ST-Lab
+		ST-Lab
 	</title>
+	<script>
+		function p1(){
+			location.href="triangle.html";
+		}
+		function p2(){
+			location.href="nextDate.html";
+		}
+	</script>
 </head>
 <body>
-	<a href = "triangle.html" >1.Triangle Program</a>
-	<a href = "nextDate.html" >2.Next Date Program</a>
+	<h2 style="text-align:center;">ST-LAB PROGRAMS</h2>
+	<div >
+		<div onclick= "p1();" id="head" >1. Triangle Program</div>
+		
+		<div id="desc">
+			<p > <blockquote><i>Design and develop a program in a language of your choice to solve the triangle problem
+				defined as follows : Accept three integers which are supposed to be the three sides of
+				triangle and determine if the three values represent an equilateral triangle, isosceles
+				triangle, scalene triangle, or they do not form a triangle at all. 
+			</i></blockquote></p>
+		</div>
+	</div>
+	<div>
+		<div onclick= "p2();" id="head" >2. Next-Date Program</div>
+		
+		<div id="desc">
+		<p > <blockquote><i>Design,develop,code and run the program in any suitable language to implement the
+			NextDate function.   </i></blockquote></p>
+		</div>
+	</div>
 </body>
 </body>
 </html>
+<style>
+	#head{
+		background:grey;
+		cursor:pointer;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+		padding:5px;
+		
+	}
+	#desc{
+		
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+		margin-top:-15px;
+	}
+	@media only screen and (min-width: 500px) {
+		body {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+   
+	}
+	
+</style>
