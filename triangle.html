@@ -12,6 +12,10 @@
 				x = "Sides NULL value";
                 error(x);
             }
+			else if(( (Number(s1)+Number(s2))<Number(s3)) || ((Number(s2)+Number(s3))<Number(s1)) || ((Number(s1)+Number(s3))<Number(s2)) ){
+				x = "Sum of two sides is less than 3rd";
+               			 error(x);
+			}
 			//Logic
 			else if((s1 <= 10 && s1>= 0) || (s2 <= 10 && s2>= 0) || (s3 <= 10 && s3>= 0)) {
 				if(s1 == s2 && s2==s3 && s3==s1 ){
