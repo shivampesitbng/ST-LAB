@@ -44,12 +44,12 @@
         }
 		//Error
 		function error() {
-            document.getElementById("result").innerHTML = "Error! " + x;
+            document.getElementById("result").innerHTML = "Error! " + x + "<br><br>" + "<button onclick='location.reload();' id='but'>Enter Again</button>";
 			
 		}
 		//Print
 		function print(){
-           document.getElementById("result").innerHTML = "<i>Triangle is: </i>" + x + y;
+           document.getElementById("result").innerHTML = "<i>Triangle is: </i>" + x + y + "<br><br>" + "<button onclick='location.reload();' id='but'>Enter Again</button>";
 		   
 		}
 		//check right-angle
