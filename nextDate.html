@@ -107,12 +107,12 @@
         }
 		//Error
 		function error() {
-            document.getElementById("result").innerHTML = "Error! " + x;
+            document.getElementById("result").innerHTML = "Error! " + x + "<br><br>" + "<button onclick='location.reload();' id='but'>Enter Again</button>";
 			
 		}
 		//Print
 		function print(){
-           document.getElementById("result").innerHTML = "<i>Next Date is: </i>" + d +"/"+ m +"/"+ y ;
+           document.getElementById("result").innerHTML = "<i>Next Date is: </i>" + d +"/"+ m +"/"+ y + "<br><br>" + "<button onclick='location.reload();' id='but'>Enter Again</button>";
 		   
 		}
     </script>
