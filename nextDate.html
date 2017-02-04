@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Next_Date</title>
+    <script type="text/javascript">
+        function displayOutput() {
+			mon = [0,31,28,31,30,31,30,31,31,30,31,30,31];
+			mon_leap = [0,31,29,31,30,31,30,31,31,30,31,30,31];
+            d = document.getElementById("d").value;
+			m = document.getElementById("m").value;
+			y = document.getElementById("y").value;
+			m= m.replace(/^0+/, '') ;
+			//Empty, Error
+            if (d.length === 0 || d.length === 0 || d.length === 0) {
+				x = "Date Empty";
+                error(x);
+            }
+			//Logic
+			else if(y >= 1800 && y<= 2100) {
+				//Not Leap
+				if(y%4 != 0 || y==1800 || y==1900 || y==2100){
+					if(m < 12){
+							if(mon[m] > d){
+								d++;
+							}
+							else if(mon[m] == d){
+								m++;
+								d=1;
+							}
+							else if(mon[m] < d){
+								x = "Invalid Date! False Day";
+								error(x);
+								return;
+							}
+						
+					}
+					else if(m == 12){
+						if(d < 31){
+							d++;
+						}
+						else if(d == 31){
+							y++;
+							d=1;
+							m=1;
+						}
+						else if(d > 31){
+							x = "Invalid Date! False Day";
+							error(x);
+							return;
+						}
+					}
+					else if(m > 12){
+						x = "Invalid Date! False Month";
+						error(x);
+						return;
+					}
+				}
+				//Leap
+				else if(y%4 == 0){
+					if(m < 12){
+							if(mon_leap[m] > d){
+								d++;
+								console.log(d);
+								console.log(m);
+							}
+							else if(mon_leap[m] == d){
+								m++;
+								d=1;
+							}
+							else if(mon_leap[m] < d){
+								x = "Invalid Date! False Day";
+								error(x);
+								return;
+							}
+					}
+					else if(m == 12){
+						if(d < 31){
+							d++;
+						}
+						else if(d == 31){
+							y++;
+							d=1;
+							m=1;
+						}
+						else if(d > 31){
+							x = "Invalid Date! False Day";
+							error(x);
+							return;
+						}
+					}
+					else if(m > 12){
+						x = "Invalid Date! False Month";
+						error(x);
+						return;
+					}
+				}
+				//Print
+				print(d,m,y);
+			}
+			else{
+				x = "Invalid Date! Year Not in Range";
+				error(x);
+				return;
+			}
+			
+	
+        }
+		//Error
+		function error() {
+            document.getElementById("result").innerHTML = "Error! " + x;
+			
+		}
+		//Print
+		function print(){
+           document.getElementById("result").innerHTML = "<i>Next Date is: </i>" + d +"/"+ m +"/"+ y ;
+		   
+		}
+    </script>
+</head>
+<body>
+    <div id="result" align="center">
+		<br>
+		<i><ins>Enter Date</ins> ( Between Year 1800 - 2100 ) : </i>
+		<p ><i></i><input type="text" maxlength="2" id="d" placeholder="Day" />
+			<i></i><input type="text" maxlength="2" id="m" placeholder="Mon" />
+			<i></i><input type="text" maxlength="4" id="y" placeholder="Year"  />
+			<br><br>
+			<input type="submit" value="Next Date" id="but" onclick="displayOutput()" />
+		</p>
+	</div>
+</body>
+</html>
+<style>
+	input[type=text] {
+    
+		padding: 6px 10px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: none;
+		border-bottom: 2px solid red;
+		
+		
+	}
+	input{
+		text-align:center;
+		
+	}
+	input::-webkit-input-placeholder {
+		text-align:center;
+		font-size: 10px;
+	
+	
+	
+	}
+	#d{
+		width:40px;
+		margin-right:.5px;
+	}
+	#m{
+		width:40px;
+		margin-right:.5px;
+		margin-left:.5px;
+	}
+	#y{
+		width:80px;
+		margin-left:.5px;
+	}
+	#but{
+		 background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 5px 40px;
+		text-align: center;
+		
+		text-decoration: none;
+		display: inline-block;
+		font-size: 12px;
+		margin: 4px 2px;
+		cursor: pointer;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+		
+	}
+	#but {
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+	
+	#result{
+		/*background:rgb(255,240,245);*/
+		color:#000;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	p{
+		color:#000;
+	}
+</style>

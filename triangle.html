@@ -1,0 +1,146 @@
+<html>
+<head>
+	<title>Triangle</title>
+	<script>
+		var y ='';
+		function displayOutput() {
+            s1 = document.getElementById("s1").value;
+			s2 = document.getElementById("s2").value;
+			s3 = document.getElementById("s3").value;
+			//Empty, Error
+            if (s1.length === 0 || s2.length === 0 || s3.length === 0) {
+				x = "Sides NULL value";
+                error(x);
+            }
+			//Logic
+			else if((s1 <= 10 && s1>= 0) || (s2 <= 10 && s2>= 0) || (s3 <= 10 && s3>= 0)) {
+				if(s1 == s2 && s2==s3 && s3==s1 ){
+					x="Equilateral";
+					ra();
+					//print(x);
+					return;
+				}
+				else if(s1==s2 && s2!=s3){
+					x="Isosceles";
+					ra();
+					//print(x);
+					return;
+				}
+				else if(s1!=s2 || s2!=s3 || s3!=s1){
+					x="Scalane";
+					ra();
+					//print(x);
+					return;
+				}
+				
+			}
+			else{
+				x = "Invalid Side Value! Sides Lenght Not in Range";
+				error(x);
+				return;
+			}
+			
+	
+        }
+		//Error
+		function error() {
+            document.getElementById("result").innerHTML = "Error! " + x;
+			
+		}
+		//Print
+		function print(){
+           document.getElementById("result").innerHTML = "<i>Triangle is: </i>" + x + y;
+		   
+		}
+		//check right-angle
+		function ra(){
+			//check rigth-angled
+				if((s1*s1 + s2*s2 == s3*s3)){
+					y=" & Right-angled";
+					
+				}
+				print();
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="result" align="center">
+		<br>
+		<i><ins>Enter Sides of Triangle</ins> ( Less than eq 10 ) : </i>
+		<p ><i></i><input type="text" maxlength="2" id="s1" placeholder="Side1"  />
+			<i></i><input type="text" maxlength="2" id="s2" placeholder="Side2" />
+			<i></i><input type="text" maxlength="2" id="s3" placeholder="Side3"  />
+			<br><br>
+			<input type="submit" value="Submit" id="but" onclick="displayOutput()" />
+		</p>
+	</div>
+</body>
+</html>
+<style>
+input[type=text] {
+    
+		padding: 6px 10px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: none;
+		border-bottom: 2px solid red;
+		
+		
+	}
+	input{
+		text-align:center;
+		
+	}
+	input::-webkit-input-placeholder {
+		text-align:center;
+		font-size: 10px;
+	
+	
+	
+	}
+	#s1{
+		width:50px;
+		margin-right:.5px;
+	}
+	#s2{
+		width:50px;
+		margin-right:.5px;
+		margin-left:.5px;
+	}
+	#s3{
+		width:50px;
+		margin-left:.5px;
+	}
+	#but{
+		 background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 5px 40px;
+		text-align: center;
+		
+		text-decoration: none;
+		display: inline-block;
+		font-size: 12px;
+		margin: 4px 2px;
+		cursor: pointer;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+		
+	}
+	#but {
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+	
+	#result{
+		/*background:rgb(255,240,245);*/
+		color:#000;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	p{
+		color:#000;
+	}
+	</style>
