@@ -5,9 +5,12 @@
 	<script>
 		var y ='';
 		function displayOutput() {
-            s1 = document.getElementById("s1").value;
+            	s1 = document.getElementById("s1").value;
+			s1=Number(s1);
 			s2 = document.getElementById("s2").value;
+			s2=Number(s2);
 			s3 = document.getElementById("s3").value;
+			s3=Number(s3);
 			//Empty, Error
             if (s1.length === 0 || s2.length === 0 || s3.length === 0) {
 				x = "Sides NULL value";
