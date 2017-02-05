@@ -1,0 +1,199 @@
+<html>
+<head>
+	<title>Binary Search</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type='text/javascript'>
+		
+        function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("member").value;
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            for (i=0;i<number;i++){
+                /* Append a node with a random text */
+               //container.appendChild(document.createTextNode("Member " + (i+1)));
+                /* Create an <input> element, set its type and name attributes */
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "member" + i;
+				input.id = "m" + i;
+				input.placeholder = "ele " + i;
+				input.style = "width:50px;"
+				
+                container.appendChild(input);
+                // Append a line break 
+                
+            }
+			container.appendChild(document.createElement("br"));
+			//key ele input
+			var input = document.createElement("input");
+            input.type = "text";
+            input.name = "key";
+			input.id = "k";
+			input.placeholder = "Key to Search";
+			input.style = "width:100px; "			
+            container.appendChild(input);
+			
+			container.appendChild(document.createElement("br"));
+			//search button
+			var button = document.createElement("button");
+			container.appendChild(button);
+			button.innerHTML = "Search";
+			button.addEventListener ("click", function() {
+				store(number);
+			});
+			container.appendChild(document.createElement("br"));
+			
+        }
+		function store(n){
+			
+			var a = [];
+			var k;
+			for(i=0;i<n;i++){
+				a[i] = document.getElementById("m"+i).value;
+				a[i] = Number(a[i]);
+				console.log(i+" "+a[i]);
+			}
+			k = document.getElementById("k").value;
+			k=Number(k);
+			console.log(k);
+			
+			//algorithm - > Binary Search (Logic)
+			if((k < a[0]) || (k > a[n-1])){ // check if key is in range ?
+				
+				print(999,a,k); // if not directly go to print function passing pos as -1
+				return ;
+			}
+			
+			//Calling binary search
+			bs(0,n-1,a,k);
+			
+		}
+		function print(pos,a,k){
+			if(pos == 999){ // if whenver we get pos as -1 , not found & exit
+				console.log("Ele Not Found");
+				//return;
+				var container = document.getElementById("container");
+				while (container.hasChildNodes()) {
+					container.removeChild(container.lastChild);
+				}
+				container.appendChild(document.createElement("br"));
+				//console.log(a);
+				container.appendChild(document.createTextNode("Ele(s): " + a));
+				container.appendChild(document.createElement("br"));
+				container.appendChild(document.createTextNode("Ele " + k + " Not Found"));
+			}
+			else{
+				console.log("Found at pos: " + pos);
+				var container = document.getElementById("container");
+				while (container.hasChildNodes()) {
+					container.removeChild(container.lastChild);
+				}
+				container.appendChild(document.createElement("br"));
+				//console.log(a);
+				container.appendChild(document.createTextNode("Ele(s): " + a));
+				container.appendChild(document.createElement("br"));
+				container.appendChild(document.createTextNode("Ele " + k + " Found at pos: " + pos));
+				
+			}
+		}
+		function bs(l,h,a,k)
+		{
+			var m;
+			while(l<=h) // till low is less than equal to high
+			{
+				 m = (l+h)/2; // finding m every time we get new low and high
+				if(k == a[m]){
+					m++;
+					print(m,a,k);
+					return;
+					//return m; // if ele is found at whatever mid,return mid
+				}
+				else if(k > a[m]) // check if key is at right side of mid
+					l = m+1; // update low as m+1,and now check only right side of array
+				else if(k < a[m]) // check if key is at left side mid
+					h = m -1; // update high as m -1 and check only at left side of array
+			}
+			m = 999; // if l is more less than equal to h , return m as 999 i.e we have searched whole array still not found ele
+			print(m,a,k);
+			return;
+			//return m;
+		}
+    </script>
+</head>
+<body>
+	<div id= "result" align="center">
+		<input  type="text" id="member" name="member" value="" placeholder="Enter No. of Elements">
+		<br>
+		<input  type="submit" value="Submit" id="button" onclick="addFields()" />
+		<div id="container"/>
+	</div>
+    
+</body>
+</html>
+<style>
+		input[type=text] {
+    
+		padding: 6px 10px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: none;
+		border-bottom: 2px solid red;
+		margin-right:2px;
+		margin-left:2px;
+		
+	}
+	input{
+		text-align:center;
+		
+	}
+	input::-webkit-input-placeholder {
+		text-align:center;
+		font-size: 10px;
+	
+	
+	
+	}
+	
+	#member{
+		width:150px;
+		
+	}
+	
+	
+	#button,button{
+		 background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 5px 40px;
+		text-align: center;
+		
+		text-decoration: none;
+		display: inline-block;
+		font-size: 12px;
+		margin: 4px 2px;
+		cursor: pointer;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+	}
+	#button,button {
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+	
+	#result{
+		/*background:rgb(255,240,245);*/
+		color:#000;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	p{
+		color:#000;
+	}
+	
+</style>
