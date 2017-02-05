@@ -70,6 +70,8 @@
 			}
 			
 			//Calling binary search
+			n=Number(n);
+			console.log(n);
 			bs(0,n-1,a,k);
 			
 		}
@@ -82,7 +84,7 @@
 					container.removeChild(container.lastChild);
 				}
 				container.appendChild(document.createElement("br"));
-				//console.log(a);
+				console.log(a);
 				container.appendChild(document.createTextNode("Ele(s): " + a));
 				container.appendChild(document.createElement("br"));
 				container.appendChild(document.createTextNode("Ele " + k + " Not Found"));
@@ -94,7 +96,7 @@
 					container.removeChild(container.lastChild);
 				}
 				container.appendChild(document.createElement("br"));
-				//console.log(a);
+				console.log(a);
 				container.appendChild(document.createTextNode("Ele(s): " + a));
 				container.appendChild(document.createElement("br"));
 				container.appendChild(document.createTextNode("Ele " + k + " Found at pos: " + pos));
@@ -104,9 +106,12 @@
 		function bs(l,h,a,k)
 		{
 			var m;
-			while(l<=h) // till low is less than equal to high
+			while(Number(l)<=Number(h)) // till low is less than equal to high
 			{
-				 m = (l+h)/2; // finding m every time we get new low and high
+				 m = (Number(l)+Number(h))/2; // finding m every time we get new low and high
+				 m=Number(m);
+				 m=parseInt(m);
+				 console.log(m);
 				if(k == a[m]){
 					m++;
 					print(m,a,k);
